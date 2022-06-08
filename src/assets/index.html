@@ -212,12 +212,16 @@
   };
 
   $("form:first").submit(async (e) => {
+    console.log("HOLAAAAA");
     e.preventDefault();
     let nombre = $("form:first input:first").val();
     let balance = Number($("form:first input:nth-child(2)").val());
     try {
-      const response = await fetch("http://localhost:3000/usuario", {
+      const response = await fetch("/usuario", {
         method: "post",
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({
           nombre,
           balance,
